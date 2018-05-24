@@ -28,9 +28,9 @@ public class Article {
         this.categorisation = categorisation;
         this.approval = approval;
     }
-@Id
-@GeneratedValue
-@Column(name = "id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -39,6 +39,11 @@ public class Article {
         this.id = id;
     }
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "article_journalist",
+            joinColumns = {@JoinColumn(name = "journalist_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)}
+    )
     public Set<String> getJournalist() {
         return journalist;
     }
@@ -46,7 +51,8 @@ public class Article {
     public void setJournalist(Set<String> journalist) {
         this.journalist = journalist;
     }
-@Column(name = "journalist")
+
+    @Column(name = "journalist")
     public String getHeading() {
         return heading;
     }
@@ -54,7 +60,8 @@ public class Article {
     public void setHeading(String heading) {
         this.heading = heading;
     }
-@Column(name = "sub_heading")
+
+    @Column(name = "sub_heading")
     public String getSubHeading() {
         return subHeading;
     }
@@ -62,7 +69,8 @@ public class Article {
     public void setSubHeading(String subHeading) {
         this.subHeading = subHeading;
     }
-@Column(name="body_article")
+
+    @Column(name="body_article")
     public String getBodyArticle() {
         return bodyArticle;
     }
@@ -70,7 +78,8 @@ public class Article {
     public void setBodyArticle(String bodyArticle) {
         this.bodyArticle = bodyArticle;
     }
-@Column(name = "article_date")
+
+    @Column(name = "article_date")
     public GregorianCalendar getDate() {
         return date;
     }
@@ -79,6 +88,7 @@ public class Article {
         this.date = date;
     }
 
+    @Enumerated(EnumType.STRING)
     public Categorisation getCategorisation() {
         return categorisation;
     }
@@ -87,6 +97,7 @@ public class Article {
         this.categorisation = categorisation;
     }
 
+    @Enumerated(EnumType.STRING)
     public Approval getApproval() {
         return approval;
     }
