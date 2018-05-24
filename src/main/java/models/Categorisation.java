@@ -1,6 +1,6 @@
 package models;
 
-public enum Categorization {
+public enum Categorisation {
     CURRENT_AFFAIRS,
     SPORT,
     POLITICS,
