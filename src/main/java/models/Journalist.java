@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Set;
+
 public class Journalist extends User {
     private int id;
     private Set<Article> articles;
