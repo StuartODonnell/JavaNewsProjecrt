@@ -1,9 +1,21 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="editors")
+
 public class Editor extends Journalist {
-    private int id;
+
 
     public Editor() {
     }
+
+    public Editor(String username) {
+        super(username);
+    }
+
+
+
 
 }
