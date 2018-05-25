@@ -9,7 +9,7 @@ import java.util.Set;
 public class Article {
 
     private int id;
-    private Set<String> journalist;
+    private Set<Journalist> journalist;
     private String heading;
     private String subHeading;
     private String bodyArticle;
@@ -42,13 +42,12 @@ public class Article {
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "article_journalist",
             joinColumns = {@JoinColumn(name = "journalist_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)}
-    )
-    public Set<String> getJournalist() {
+            inverseJoinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)})
+    public Set<Journalist> getJournalist() {
         return journalist;
     }
 
-    public void setJournalist(Set<String> journalist) {
+    public void setJournalist(Set<Journalist> journalist) {
         this.journalist = journalist;
     }
 
