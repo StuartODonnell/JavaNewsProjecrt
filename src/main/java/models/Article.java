@@ -7,7 +7,6 @@ import java.util.Set;
 @Entity
 @Table(name = "articles")
 public class Article {
-
     private int id;
     private Set<Journalist> journalist;
     private String heading;
@@ -16,9 +15,6 @@ public class Article {
     private GregorianCalendar date;
     private Categorisation categorisation;
     private Approval approval;
-
-    public Article(String heading1, String subheading2, GregorianCalendar gregorianCalendar, Categorisation currentAffairs, Approval approved) {
-    }
 
     public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Approval approval) {
         this.heading = heading;
