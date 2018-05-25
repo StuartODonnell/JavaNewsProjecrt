@@ -6,4 +6,7 @@ public enum Categorisation {
     POLITICS,
     SCIENCE_NATURE,
     FINANCE
+
+
+//    TODO STUART CAN YOU CHECK YOU"RE HAPPY WITH THESE CATEGOR
 }
