@@ -17,7 +17,7 @@ public class Article {
     private Categorisation categorisation;
     private Approval approval;
 
-    public Article() {
+    public Article(String heading1, String subheading2, GregorianCalendar gregorianCalendar, Categorisation currentAffairs, Approval approved) {
     }
 
     public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Approval approval) {
