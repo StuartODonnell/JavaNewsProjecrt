@@ -5,6 +5,8 @@ import db.DBHelper;
 import sun.jvm.hotspot.ui.Editor;
 
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Set;
 
 public class Seeds {
 
@@ -28,6 +30,8 @@ public class Seeds {
         DBHelper.save(article1);
         DBHelper.save(article2);
         DBHelper.save(article3);
+
+        List<Article> sortedArticles = DBArticle.returnArticlesinDescOrder();
 
     }
 
