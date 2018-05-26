@@ -17,13 +17,13 @@ public class Article {
     private Categorisation categorisation;
     private Approval approval;
 
-    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Approval approval) {
+    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation) {
         this.heading = heading;
         this.subHeading = subHeading;
         this.bodyArticle = bodyArticle;
         this.date = date;
         this.categorisation = categorisation;
-        this.approval = approval;
+        this.approval = Approval.PENDING;
         journalists = new HashSet<>();
     }
     @Id
