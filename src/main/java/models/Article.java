@@ -2,13 +2,14 @@ package models;
 
 import javax.persistence.*;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "articles")
 public class Article {
     private int id;
-    private Set<Journalist> journalist;
+    private Set<Journalist> journalists;
     private String heading;
     private String subHeading;
     private String bodyArticle;
@@ -23,6 +24,7 @@ public class Article {
         this.date = date;
         this.categorisation = categorisation;
         this.approval = approval;
+        journalists = new HashSet<>();
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,11 +42,11 @@ public class Article {
             joinColumns = {@JoinColumn(name = "journalist_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)})
     public Set<Journalist> getJournalist() {
-        return journalist;
+        return journalists;
     }
 
     public void setJournalist(Set<Journalist> journalist) {
-        this.journalist = journalist;
+        this.journalists = journalist;
     }
 
     @Column(name = "journalist")
@@ -99,5 +101,10 @@ public class Article {
 
     public void setApproval(Approval approval) {
         this.approval = approval;
+    }
+
+    //adds journalist object to journalist hash
+    public void addJournalist(Journalist journalist){
+        journalists.add(journalist);
     }
 }
