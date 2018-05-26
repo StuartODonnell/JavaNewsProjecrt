@@ -52,4 +52,9 @@ public class Journalist {
         this.username = username;
     }
 
+    //adds article object to articles hash
+    public void addJournalist(Article article){
+        articles.add(article);
+    }
+
 }
