@@ -1,33 +1,33 @@
 package db;
 
+import models.Approval;
 import models.Article;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class DBArticle {
+public class DBJournalist {
+
 
     private static Transaction transaction;
     private static Session session;
 
-    public static List<Article> returnArticlesinDescOrder(){
+
+    public static List<Article> unapprovedArticlesList() {
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Article> sortedArticles = null;
-        try {Criteria cr = session.createCriteria(Article.class);
-            cr.addOrder(Order.desc("date"));
-            sortedArticles = cr.list();
-        } catch(HibernateException e){
+        List<Article> unapprovedArticlesList = null;
+        try { Criteria cr = session.createCriteria(Article.class);
+            cr.add(Restrictions.eq("approval", Approval.PENDING));
+            unapprovedArticlesList = cr.list();
+        } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
-        } return sortedArticles;
+        }
+        return unapprovedArticlesList;
     }
-
 }

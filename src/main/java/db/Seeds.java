@@ -32,7 +32,7 @@ public class Seeds {
         DBHelper.save(article3);
 
         List<Article> sortedArticles = DBArticle.returnArticlesinDescOrder();
-
+        List<Article>  unapprovedArticles = DBJournalist.unapprovedArticlesList();
     }
 
 }

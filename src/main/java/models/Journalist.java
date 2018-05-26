@@ -56,5 +56,14 @@ public class Journalist {
     public void addJournalist(Article article){
         articles.add(article);
     }
+    //approves article
+    public void changeStatusofArticletoApproved(Article article){
+        article.setApproval(Approval.APPROVED);
+    }
+
+    //denies article
+    public void changeStatusofArticletoDenies(Article article){
+        article.setApproval(Approval.DENIED);
+    }
 
 }
