@@ -23,9 +23,9 @@ public class Seeds {
         DBHelper.save(journalist3);
 
 
-        Article article1 = new Article("heading1", "subheading1", "bodytext1", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS, Approval.APPROVED);
-        Article article2 = new Article("heading2", "subheading2", "bodytext2", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT, Approval.DENIED);
-        Article article3 = new Article("heading3", "subheading3", "bodytext3", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, Approval.PENDING);
+        Article article1 = new Article("heading1", "subheading1", "bodytext1", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS);
+        Article article2 = new Article("heading2", "subheading2", "bodytext2", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT);
+        Article article3 = new Article("heading3", "subheading3", "bodytext3", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE);
 
         DBHelper.save(article1);
         DBHelper.save(article2);

@@ -26,6 +26,10 @@ public class Article {
         this.approval = Approval.PENDING;
         journalists = new HashSet<>();
     }
+
+    public Article() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
