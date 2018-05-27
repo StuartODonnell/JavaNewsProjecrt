@@ -33,6 +33,26 @@ public class Seeds {
 
         List<Article> sortedArticles = DBArticle.returnArticlesinDescOrder();
         List<Article>  unapprovedArticles = DBJournalist.unapprovedArticlesList();
+        List<Article> testSearchArticles = DBArticle.searchArticlesByHeading("head");
+        List<Article> testSearchArticlesCapitalised = DBArticle.searchArticlesByHeading("Head");
+        List<Journalist> testSearchJounalists = DBJournalist.searchJournalistByUserName("jour");
+        List<Journalist> testSearchJounalistsCapitalised = DBJournalist.searchJournalistByUserName("Jour");
+
+
+        List<Article> testSearchArticlesBySubHeading = DBArticle.searchArticlesBySubHeading("sub");
+        List<Article> testSearchArticlesBySubHeadingCaps = DBArticle.searchArticlesBySubHeading("Sub");
+
+
+        List<Article> testSearchArticlesByBody = DBArticle.searchArticlesByBody("ody");
+        List<Article> testSearchArticlesByBodyCaps = DBArticle.searchArticlesByBody("Ody");
+
+        List<Article> currentAffairsArticles = DBArticle.returnArticlesByCat(Categorisation.CURRENT_AFFAIRS);
+        List<Article> sportArticles = DBArticle.returnArticlesByCat(Categorisation.SPORT);
+        List<Article> scienceandNatureArticles = DBArticle.returnArticlesByCat(Categorisation.SCIENCE_NATURE);
+        List<Article> financeArticles = DBArticle.returnArticlesByCat(Categorisation.FINANCE);
+        List<Article> politicsArticles = DBArticle.returnArticlesByCat(Categorisation.POLITICS);
+
+
     }
 
 }

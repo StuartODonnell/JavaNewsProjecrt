@@ -7,6 +7,8 @@ import java.util.Set;
 @Entity
 @Table(name="journalists")
 
+//TODO consider refactoring the journalist class to show name....like Journalist name and not just username. Discuss with Stuart
+
 public class Journalist {
     private String username;
     private int id;

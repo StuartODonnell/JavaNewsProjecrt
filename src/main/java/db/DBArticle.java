@@ -1,6 +1,7 @@
 package db;
 
 import models.Article;
+import models.Categorisation;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -28,6 +29,76 @@ public class DBArticle {
         } finally {
             session.close();
         } return sortedArticles;
+    }
+
+    public static List<Article> searchArticlesByHeading(String searchText){
+        String revisedSearchText = "%" + searchText.toLowerCase() + "%";
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> foundArticles = null;
+        try {
+            if (searchText.length() >= 1) {
+                Criteria cr = session.createCriteria(Article.class);
+                cr.addOrder(Order.desc("date"));
+                cr.add(Restrictions.like("heading", revisedSearchText));
+                foundArticles = cr.list();
+            }
+        } catch (HibernateException e ){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        } return foundArticles;
+    }
+
+
+    public static List<Article> searchArticlesBySubHeading(String searchText){
+        String revisedSearchText = "%" + searchText.toLowerCase() + "%";
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> foundArticles = null;
+        try {
+            if (searchText.length() >= 1) {
+                Criteria cr = session.createCriteria(Article.class);
+                cr.addOrder(Order.desc("date"));
+                cr.add(Restrictions.like("subHeading", revisedSearchText));
+                foundArticles = cr.list();
+            }
+        } catch (HibernateException e ){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        } return foundArticles;
+    }
+
+    public static List<Article> searchArticlesByBody(String searchText){
+        String revisedSearchText = "%" + searchText.toLowerCase() + "%";
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> foundArticles = null;
+        try {
+            if (searchText.length() >= 1) {
+                Criteria cr = session.createCriteria(Article.class);
+                cr.addOrder(Order.desc("date"));
+                cr.add(Restrictions.like("bodyArticle", revisedSearchText));
+                foundArticles = cr.list();
+            }
+        } catch (HibernateException e ){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        } return foundArticles;
+    }
+
+    public static List<Article> returnArticlesByCat(Categorisation category){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> foundArticles = null;
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.addOrder(Order.desc("date"));
+            cr.add(Restrictions.eq("categorisation", category));
+            foundArticles = cr.list();
+        } catch (HibernateException e ){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        } return foundArticles;
     }
 
 }
