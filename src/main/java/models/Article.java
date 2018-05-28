@@ -24,7 +24,7 @@ public class Article {
         this.date = date;
         this.categorisation = categorisation;
         this.approval = Approval.PENDING;
-        journalists = new HashSet<>();
+        this.journalists = new HashSet<>();
     }
 
     public Article() {

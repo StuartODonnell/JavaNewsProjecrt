@@ -1,5 +1,7 @@
 package db;
 
+import models.Journalist;
+import models.Article;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -7,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
+import java.util.Set;
 
 public class DBHelper {
 
@@ -70,5 +73,20 @@ public class DBHelper {
         } finally {
             session.close();
         }
+    }
+
+    public static List<Article> findArticlesByJournalist(Journalist journalist){
+        session = db.HibernateUtil.getSessionFactory().openSession();
+        List<Article> foundArticles = null;
+        int journalistID = journalist.getId();
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.add(Restrictions.eq("id", journalistID));
+            foundArticles = cr.list();
+        } catch (HibernateException e ) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }return foundArticles;
     }
 }

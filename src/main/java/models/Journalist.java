@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -10,12 +11,15 @@ import java.util.Set;
 //TODO consider refactoring the journalist class to show name....like Journalist name and not just username. Discuss with Stuart
 
 public class Journalist {
+    private String name;
     private String username;
     private int id;
     private Set<Article> articles;
 
-    public Journalist(String username) {
+    public Journalist(String name, String username) {
         this.username = username;
+        this.name = name;
+        this.articles = new HashSet<>();
     }
 
     public Journalist(){
@@ -54,8 +58,17 @@ public class Journalist {
         this.username = username;
     }
 
+    @Column(name = "names")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //adds article object to articles hash
-    public void addJournalist(Article article){
+    public void addArticle(Article article){
         articles.add(article);
     }
     //approves article
