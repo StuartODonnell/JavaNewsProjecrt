@@ -22,9 +22,9 @@ public class ArticleController {
 
             get("/articles/:id/edit", (req, res) -> {
                 String stringId = req.params(":id");
-                Integer intId = Integer.parseInt(stringId);
+                Integer integerId = Integer.parseInt(stringId);
                 Article article = DBHelper.find(integerId, Article.class);
-                List<Journalist> departments = DBHelper.getAll(Journalist.class);
+                List<Journalist> journalists = DBHelper.getAll(Journalist.class);
 
                 Map<String, Object> model = new HashMap<>();
 //                String loggedInUser = LoginController.getLoggedInUserName(req, res);
@@ -60,7 +60,7 @@ public class ArticleController {
                 String stringId = req.params(":id");
                 Integer integerId = Integer.parseInt(stringId);
                 Article article = DBHelper.find(integerId, Article.class);
-                List<Article> articles = DBHelper.findArticlesForJournalist(article.getJournalist());
+                List<Article> articles = DBHelper.find(article.getJournalist());
 
                 Map<String, Object> model = new HashMap<>();
 //                String loggedInUser = LoginController.getLoggedInUserName(req, res);
@@ -75,7 +75,7 @@ public class ArticleController {
                 int journalistId = Integer.parseInt(req.queryParams("journalist"));
                 Journalist journalist = DBHelper.find(journalistId, Journalist.class);
                 String userName = req.queryParams("userName");
-                Article article = new Article(heading, subHeading, bodyArticle, date, categorisation, approval);
+                Article article = new Article("heading", "subHeading", "bodyArticle", new GregorianCalendar(2018,05,28), Categorisation.CURRENT_AFFAIRS, Approval.APPROVED);
                 DBHelper.save(article);
                 res.redirect("/articles");
                 return null;

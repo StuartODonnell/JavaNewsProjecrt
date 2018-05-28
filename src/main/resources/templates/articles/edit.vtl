@@ -1,0 +1,19 @@
+<p class="pageHeader">Journalists</p>
+
+<div>
+    <a href="/journalists/new" class="button center">Journalist</a>
+</div>
+<div class="container">
+    <table>
+        <tr>
+            <th>Journalist</th>
+            <th></th>
+        </tr>
+        #foreach($journalist in $journalists)
+        <tr>
+            <td>$djournalist.getuserName()</td>
+            <td><a href="/journalists/$journalist.getId()" class="button center">Details</a></td>
+        <tr>
+            #end
+    </table>
+</div>

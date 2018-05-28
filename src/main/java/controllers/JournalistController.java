@@ -64,7 +64,7 @@ public class JournalistController {
 //            model.put("user", loggedInUser);
             model.put("journalist", journalist);
             model.put("articles", articles);
-            model.put("template", "templates/jouralists/show.vtl");
+            model.put("template", "templates/journalists/show.vtl");
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -80,7 +80,7 @@ public class JournalistController {
         post ("/djournalists", (req, res) -> {
             String title = req.queryParams("title");
 
-            Journalist journalist = new Journalist(username);
+            Journalist journalist = new Journalist(name);
             DBHelper.save(journalist);
             res.redirect("/departments");
             return null;
@@ -99,7 +99,7 @@ public class JournalistController {
             Integer integerId = Integer.parseInt(stringId);
             Journalist journalist = DBHelper.find(integerId, Journalist.class);
             String title = req.queryParams("username");
-            journalist.setUsername(userName);
+            journalist.setName(name);
             DBHelper.save(journalist);
             res.redirect("/journalists");
             return null;
