@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +10,6 @@ import java.util.Set;
 @Entity
 @Table(name="journalists")
 
-//TODO consider refactoring the journalist class to show name....like Journalist name and not just username. Discuss with Stuart
 
 public class Journalist {
     private String name;
@@ -36,11 +37,9 @@ public class Journalist {
         this.id = id;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "article_journalist",
-            inverseJoinColumns = {@JoinColumn(name = "journalist_id", nullable = false, updatable = false)},
-            joinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)}
-    )
+
+
+    @OneToMany(mappedBy = "journalist")
     public Set<Article> getArticles() {
         return articles;
     }
