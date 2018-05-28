@@ -69,13 +69,13 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get ("/journalists/new", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
-//            model.put("user", loggedInUser);
-            model.put("template", "templates/journalists/create.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
+//        get ("/journalists/new", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+////            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+////            model.put("user", loggedInUser);
+//            model.put("template", "templates/journalists/create.vtl");
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, new VelocityTemplateEngine());
 
         post ("/journalists", (req, res) -> {
             String name = req.queryParams("name");

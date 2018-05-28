@@ -23,7 +23,7 @@ public class ArticleController {
             get("/articles/:id/edit", (req, res) -> {
                 String stringId = req.params(":id");
                 Integer integerId = Integer.parseInt(stringId);
-                Article article = DBHelper.find(integerId, Article.class);
+                Article article = DBHelper.find(Article.class,integerId);
                 List<Journalist> journalists = DBHelper.getAll(Journalist.class);
 
                 Map<String, Object> model = new HashMap<>();
@@ -59,8 +59,8 @@ public class ArticleController {
             get("/articles/:id", (req, res) -> {
                 String stringId = req.params(":id");
                 Integer integerId = Integer.parseInt(stringId);
-                Article article = DBHelper.find(integerId, Article.class);
-                List<Article> articles = DBHelper.find(article.getJournalist());
+                Article article = DBHelper.find(Article.class, integerId);
+                List<Journalist> journalists = DBHelper.findJournalistsByArticle(article);
 
                 Map<String, Object> model = new HashMap<>();
 //                String loggedInUser = LoginController.getLoggedInUserName(req, res);
@@ -73,9 +73,9 @@ public class ArticleController {
 
             post ("/articles", (req, res) -> {
                 int journalistId = Integer.parseInt(req.queryParams("journalist"));
-                Journalist journalist = DBHelper.find(journalistId, Journalist.class);
+                Journalist journalist = DBHelper.find(Journalist.class,journalistId);
                 String userName = req.queryParams("userName");
-                Article article = new Article("heading", "subHeading", "bodyArticle", new GregorianCalendar(2018,05,28), Categorisation.CURRENT_AFFAIRS, Approval.APPROVED);
+                Article article = new Article("heading", "subHeading", "bodyArticle", new GregorianCalendar(2018,05,28), Categorisation.CURRENT_AFFAIRS);
                 DBHelper.save(article);
                 res.redirect("/articles");
                 return null;
@@ -83,7 +83,7 @@ public class ArticleController {
 
             post ("/articles/:id/delete", (req, res) -> {
                 int id = Integer.parseInt(req.params(":id"));
-                Article articleToDelete = DBHelper.find(id, Article.class);
+                Article articleToDelete = DBHelper.find(Article.class, id);
                 DBHelper.delete(articleToDelete);
                 res.redirect("/articles");
                 return null;
@@ -92,9 +92,9 @@ public class ArticleController {
             post ("/articles/:id", (req, res) -> {
                 String stringId = req.params(":id");
                 Integer integerId = Integer.parseInt(stringId);
-                Article article = DBHelper.find(integerId, Article.class);
+                Article article = DBHelper.find(Article.class, integerId, );
                 int journalistId = Integer.parseInt(req.queryParams("journalist"));
-                Journalist journalist = DBHelper.find(journalistId, Journalist.class);
+                Journalist journalist = DBHelper.find(Journalist.class, journalistId);
                 String userName = req.queryParams("userName");
 
                 journalist.setUsername(userName);
