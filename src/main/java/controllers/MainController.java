@@ -15,6 +15,7 @@ import static spark.SparkBase.staticFileLocation;
 public class MainController {
 
     public static void main(String[] args) {
+
         Seeds.seedData();
 
         //TODO CREATE STATIC FILE LOCATION
