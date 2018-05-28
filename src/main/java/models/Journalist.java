@@ -68,7 +68,7 @@ public class Journalist {
 
     //adds article object to articles hash
     public void addArticle(Article article){
-        articles.add(article);
+        this.articles.add(article);
     }
     //approves article
     public void changeStatusofArticletoApproved(Article article){

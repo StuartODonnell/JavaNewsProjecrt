@@ -62,7 +62,7 @@ public class DBHelper {
     }
 
     public static void delete(Object object){
-        session = db.HibernateUtil.getSessionFactory().openSession();
+        session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
             session.delete(object);
@@ -76,12 +76,12 @@ public class DBHelper {
     }
 
     public static List<Article> findArticlesByJournalist(Journalist journalist){
-        session = db.HibernateUtil.getSessionFactory().openSession();
+        session = HibernateUtil.getSessionFactory().openSession();
         List<Article> foundArticles = null;
-        int journalistID = journalist.getId();
+
         try {
             Criteria cr = session.createCriteria(Article.class);
-            cr.add(Restrictions.eq("id", journalistID));
+            cr.add(Restrictions.eq("journalist", journalist));
             foundArticles = cr.list();
         } catch (HibernateException e ) {
             e.printStackTrace();

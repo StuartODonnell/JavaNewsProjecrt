@@ -26,22 +26,18 @@ public class Seeds {
         Article article1 = new Article("heading1", "subheading1", "bodytext1", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS, journalist1);
         Article article2 = new Article("heading2", "subheading2", "bodytext2", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT, journalist2);
         Article article3 = new Article("heading3", "subheading3", "bodytext3", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist3);
+        Article article4 = new Article("heading4", "subheading4", "bodytext4", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist2);
+        Article article5 = new Article("heading5", "subheading5", "bodytext5", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist2);
 
 
         DBHelper.save(article1);
         DBHelper.save(article2);
         DBHelper.save(article3);
+        DBHelper.save(article4);
+        DBHelper.save(article5);
 
 
-        journalist1.addArticle(article1);
-        journalist2.addArticle(article2);
-        journalist2.addArticle(article1);
-        journalist3.addArticle(article3);
 
-
-        DBHelper.save(article1);
-        DBHelper.save(article2);
-        DBHelper.save(article3);
 
 
 
