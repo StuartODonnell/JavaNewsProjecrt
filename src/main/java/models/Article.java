@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
@@ -9,7 +11,7 @@ import java.util.Set;
 @Table(name = "articles")
 public class Article {
     private int id;
-    private Set<Journalist> journalists;
+    private Journalist journalist;
     private String heading;
     private String subHeading;
     private String bodyArticle;
@@ -17,14 +19,14 @@ public class Article {
     private Categorisation categorisation;
     private Approval approval;
 
-    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation) {
+    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Journalist journalist) {
         this.heading = heading;
         this.subHeading = subHeading;
         this.bodyArticle = bodyArticle;
         this.date = date;
         this.categorisation = categorisation;
         this.approval = Approval.PENDING;
-        this.journalists = new HashSet<>();
+        this.journalist = journalist;
     }
 
     public Article() {
@@ -41,19 +43,17 @@ public class Article {
         this.id = id;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "article_journalist",
-            joinColumns = {@JoinColumn(name = "journalist_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)})
-    public Set<Journalist> getJournalist() {
-        return journalists;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "journalist_id", nullable = false)
+    public Journalist getJournalist() {
+        return journalist;
     }
 
-    public void setJournalist(Set<Journalist> journalist) {
-        this.journalists = journalist;
+    public void setJournalist(Journalist journalist) {
+        this.journalist = journalist;
     }
 
-    @Column(name = "journalist")
+    @Column(name = "heading")
     public String getHeading() {
         return heading;
     }
@@ -107,8 +107,5 @@ public class Article {
         this.approval = approval;
     }
 
-    //adds journalist object to journalist hash
-    public void addJournalist(Journalist journalist){
-        journalists.add(journalist);
-    }
+
 }

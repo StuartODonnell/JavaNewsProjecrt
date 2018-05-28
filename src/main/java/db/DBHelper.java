@@ -89,19 +89,4 @@ public class DBHelper {
             session.close();
         }return foundArticles;
     }
-
-    public static List<Journalist> findJournalistforArticles(Article article){
-        session = db.HibernateUtil.getSessionFactory().openSession();
-        List<Journalist> foundJournalists = null;
-        int articleId = article.getId();
-        try {
-            Criteria cr = session.createCriteria(Journalist.class);
-            cr.add(Restrictions.eq("id", articleId));
-            foundJournalists = cr.list();
-        } catch (HibernateException e ) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }return foundJournalists;
-    }
 }
