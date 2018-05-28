@@ -1,3 +1,4 @@
+
 <p class="pageHeader">All Employees</p>
 
 <div class="container">
@@ -12,6 +13,21 @@
             <td>$journalist.getName()</td>
             <td>$journalist.getUsername()</td>
             <td><a href=""><Articles</a> </td>
+
+<p class="pageHeader">All Articles</p>
+
+<div class="container">
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <th>Articles</th>
+        </tr>
+        #foreach($jounalist in $journalists)
+        <tr>
+            <td>$journalist.getName()</td>
+            <td>$journalist.getArticles</td>
+
         <tr>
             #end
     </table>
