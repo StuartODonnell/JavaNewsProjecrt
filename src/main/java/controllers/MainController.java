@@ -21,6 +21,9 @@ public class MainController {
         //TODO CREATE STATIC FILE LOCATION
         staticFileLocation("/public");
 
+        JournalistController journalistController = new JournalistController();
+        ArticleController articleController = new ArticleController();
+
         //TODO MAIN METHOD FOR GET - USERNAME AND PASSWORD
         ArticleController articleController = new ArticleController();
         JournalistController journalistController = new JournalistController();

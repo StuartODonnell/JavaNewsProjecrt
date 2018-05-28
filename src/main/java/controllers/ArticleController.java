@@ -18,6 +18,7 @@ import static spark.Spark.post;
 
 public class ArticleController {
 
+
     public ArticleController() {
         this.setupEndpoints();
     }
@@ -44,11 +45,34 @@ public class ArticleController {
 //                String loggedInUser = LoginController.getLoggedInUserName(req, res);
 //                model.put("user", loggedInUser);
                 List<Article> articles = DBHelper.getAll(Article.class);
-                model.put("articles", articles);
-                model.put("template", "templates/articles/index.vtl");
 
+                model.put("template", "templates/articles/index.vtl");
+                model.put("articles", articles);
                 return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
+
+            get ("/articles/new", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+//                String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//                model.put("user", loggedInUser);
+                List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+                model.put("journalists", journalists);
+                model.put("template", "templates/articles/create.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+
+            get("/articles/:id", (req, res) -> {
+                String stringId = req.params(":id");
+                Integer integerId = Integer.parseInt(stringId);
+                Article article = DBHelper.find(Article.class, integerId);
+                List<Journalist> journalists = DBHelper.findJournalistsByArticle(article);
+
+                Map<String, Object> model = new HashMap<>();
+//                String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//                model.put("user", loggedInUser);
+                model.put("article", article);
+                model.put("template", "templates/articles/show.vtl");
 
 
 //            get ("/articles/new", (req, res) -> {
@@ -113,3 +137,4 @@ public class ArticleController {
 
 }
 }
+
