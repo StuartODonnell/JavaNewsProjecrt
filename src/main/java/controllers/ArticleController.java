@@ -1,25 +1,29 @@
-//package controllers;
-//
-//import db.DBHelper;
-//import models.Approval;
-//import models.Article;
-//import models.Categorisation;
-//import models.Journalist;
-//import spark.ModelAndView;
-//import spark.template.velocity.VelocityTemplateEngine;
-//
-//import java.util.GregorianCalendar;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//
-//import static spark.Spark.get;
-//import static spark.Spark.post;
-//
-//public class ArticleController {
-//
-//    private void setupEndpoints() {
-//
+package controllers;
+
+import db.DBHelper;
+import models.Approval;
+import models.Article;
+import models.Categorisation;
+import models.Journalist;
+import spark.ModelAndView;
+import spark.template.velocity.VelocityTemplateEngine;
+
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static spark.Spark.get;
+import static spark.Spark.post;
+
+public class ArticleController {
+
+    public ArticleController() {
+        this.setupEndpoints();
+    }
+
+    private void setupEndpoints() {
+
 //            get("/articles/:id/edit", (req, res) -> {
 //                String stringId = req.params(":id");
 //                Integer integerId = Integer.parseInt(stringId);
@@ -34,17 +38,19 @@
 //
 //                return new ModelAndView(model, "templates/layout.vtl");
 //            }, new VelocityTemplateEngine());
-//
-//            get("/articles", (req, res) -> {
-//                Map<String, Object> model = new HashMap<>();
-////                String loggedInUser = LoginController.getLoggedInUserName(req, res);
-////                model.put("user", loggedInUser);
-//                List<Article> articles = DBHelper.getAll(Article.class);
-//                model.put("template", "templates/articles/index.vtl");
-//                model.put("articles", articles);
-//                return new ModelAndView(model, "templates/layout.vtl");
-//            }, new VelocityTemplateEngine());
-//
+
+            get("/articles", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+//                String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//                model.put("user", loggedInUser);
+                List<Article> articles = DBHelper.getAll(Article.class);
+                model.put("articles", articles);
+                model.put("template", "templates/articles/index.vtl");
+
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+
 //            get ("/articles/new", (req, res) -> {
 //                Map<String, Object> model = new HashMap<>();
 ////                String loggedInUser = LoginController.getLoggedInUserName(req, res);
@@ -104,5 +110,6 @@
 //
 //            }, new VelocityTemplateEngine());
 //        }
-//
-//}
+
+}
+}

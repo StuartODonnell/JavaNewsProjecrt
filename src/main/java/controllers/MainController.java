@@ -22,6 +22,8 @@ public class MainController {
         staticFileLocation("/public");
 
         //TODO MAIN METHOD FOR GET - USERNAME AND PASSWORD
+        ArticleController articleController = new ArticleController();
+        JournalistController journalistController = new JournalistController();
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
