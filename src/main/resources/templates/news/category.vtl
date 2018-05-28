@@ -1,10 +1,10 @@
-<p class="newsPageTitle">Latest news</p>
+<p class="newsPageTitle">$category news</p>
 
 <div class="article_box">
-        #foreach($article in $articles)
+    #foreach($article in $articles)
     <div class="heading">$article.getHeading()</div>
     <div class="subheading">$article.getSubHeading()</div>
     <p class="articleDate">$article.returnCalenderasString()</p>
     <a href ="/news/$article.getId()" class="linktobody" >Full Story</a>
-         #end
+        #end
 </div>

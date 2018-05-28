@@ -44,6 +44,57 @@ public class NewsController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
 
+            get("/news/sport", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                List<Article> articles = DBArticle.returnArticlesByCat(Categorisation.SPORT);
+                String category = "Sport";
+                model.put("category", category);
+                model.put("template", "templates/news/category.vtl");
+                model.put("articles", articles);
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+            get("/news/currentaffairs", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                List<Article> articles = DBArticle.returnArticlesByCat(Categorisation.CURRENT_AFFAIRS);
+                String category = "Current Affairs";
+                model.put("category", category);
+                model.put("template", "templates/news/category.vtl");
+                model.put("articles", articles);
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+            get("/news/finance", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                List<Article> articles = DBArticle.returnArticlesByCat(Categorisation.FINANCE);
+                String category = "Finance";
+                model.put("category", category);
+                model.put("template", "templates/news/category.vtl");
+                model.put("articles", articles);
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+            get("/news/sciencenature", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                List<Article> articles = DBArticle.returnArticlesByCat(Categorisation.SCIENCE_NATURE);
+                String category = "Science and Nature";
+                model.put("category", category);
+                model.put("template", "templates/news/category.vtl");
+                model.put("articles", articles);
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+            get("/news/politics", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                List<Article> articles = DBArticle.returnArticlesByCat(Categorisation.POLITICS);
+                String category = "Politics";
+                model.put("category", category);
+                model.put("template", "templates/news/category.vtl");
+                model.put("articles", articles);
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+
             get("/news/:id", (req, res) -> {
                 Integer integerId = Integer.parseInt(req.params("id"));
                 Article article = DBHelper.find(Article.class, integerId);
@@ -52,6 +103,8 @@ public class NewsController {
                 model.put("template", "templates/news/show.vtl");
                 return new ModelAndView(model, "templates/layout.vtl");
                 }, new VelocityTemplateEngine());
-            }
+
+
+    }
 }
 

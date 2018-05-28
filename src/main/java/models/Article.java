@@ -119,5 +119,10 @@ public class Article {
         return stringDate;
     }
 
+    public String returnCategoryasString(){
+        String cat = categorisation.toString();
+        return cat;
+    }
+
 
 }
