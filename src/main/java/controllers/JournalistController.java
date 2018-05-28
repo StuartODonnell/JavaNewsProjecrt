@@ -64,6 +64,7 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+
         get ("/journalists/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 //            String loggedInUser = LoginController.getLoggedInUserName(req, res);
@@ -72,10 +73,12 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+
         post ("/journalists", (req, res) -> {
             String name = req.queryParams("name");
+            String username = req.queryParams("username");
 
-            Journalist journalist = new Journalist("name", "username");
+            Journalist journalist = new Journalist(name, username);
             DBHelper.save(journalist);
             res.redirect("/journalists");
             return null;
@@ -91,6 +94,7 @@ public class JournalistController {
             res.redirect("/journalists");
             return null;
         }, new VelocityTemplateEngine());
+
 
         post ("/journalists/:id", (req, res) -> {
             String stringId = req.params("id");
