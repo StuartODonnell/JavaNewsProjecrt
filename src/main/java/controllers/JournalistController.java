@@ -52,22 +52,19 @@ public class JournalistController {
 //            model.put("template", "templates/journalists/create.vtl");
 //            return new ModelAndView(model, "templates/layout.vtl");
 //        }, new VelocityTemplateEngine());
-//
-//        get("/journalists/:id", (req, res) -> {
-//            String stringId = req.params(":id");
-//            Integer integerId = Integer.parseInt(stringId);
-//            Journalist journalist = DBHelper.find(Journalist.class, integerId);
-//            List<Article> articles = DBHelper.findArticlesByJournalist(journalist);
-//
-//            Map<String, Object> model = new HashMap<>();
-////            String loggedInUser = LoginController.getLoggedInUserName(req, res);
-////            model.put("user", loggedInUser);
-//            model.put("journalist", journalist);
-//            model.put("articles", articles);
-//            model.put("template", "templates/journalists/show.vtl");
-//
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, new VelocityTemplateEngine());
+
+        get("/journalists/:id", (req, res) -> {
+            Integer integerId = Integer.parseInt(req.params("id"));
+            Journalist journalist = DBHelper.find(Journalist.class, integerId);
+            List<Article> articles = DBHelper.findArticlesByJournalist(journalist);
+            Map<String, Object> model = new HashMap<>();
+//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//            model.put("user", loggedInUser);
+            model.put("journalist", journalist);
+            model.put("articles", articles);
+            model.put("template", "templates/journalists/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 //
 ////        get ("/journalists/new", (req, res) -> {
 ////            Map<String, Object> model = new HashMap<>();
