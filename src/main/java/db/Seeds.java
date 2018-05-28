@@ -34,11 +34,13 @@ public class Seeds {
 
 
         article1.addJournalist(journalist1);
+        article1.addJournalist(journalist2);
         article2.addJournalist(journalist2);
         article3.addJournalist(journalist3);
 
         journalist1.addArticle(article1);
         journalist2.addArticle(article2);
+        journalist2.addArticle(article1);
         journalist3.addArticle(article3);
 
         DBHelper.save(journalist1);
@@ -50,6 +52,7 @@ public class Seeds {
         DBHelper.save(article3);
 
         List<Article> articlesbyJournalist = DBHelper.findArticlesByJournalist(journalist2);
+        List<Journalist> journalistsbyArticle = DBHelper.findJournalistforArticles(article1);
 
 //        List<Article> sortedArticles = DBArticle.returnArticlesinDescOrder();
 //        List<Article>  unapprovedArticles = DBJournalist.unapprovedArticlesList();
