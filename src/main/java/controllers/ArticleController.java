@@ -18,7 +18,6 @@ import static spark.Spark.post;
 
 public class ArticleController {
 
-
     public ArticleController() {
         this.setupEndpoints();
     }
@@ -133,8 +132,8 @@ public class ArticleController {
 //                return null;
 //
 //            }, new VelocityTemplateEngine());
-//        }
+        }
 
 }
-}
+
 
