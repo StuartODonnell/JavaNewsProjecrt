@@ -1,11 +1,42 @@
 h1 {
+margin: 0px;
 text-color: #EDEDFB;
-text-size: 30px;
 background-color: #FF0000;
 justify-content: center;
-text-align: center;
+text-align: left;
+padding: 20px;
+font-family: "Gravitas One";
+font-style: normal;
+font-weight: 500;
+line-height: 26.4px;
+}
+
+.pageheader {
+margin: 0px;
+text-color: #EDEDFB;
+background-color: #FF0000;
+justify-content: center;
+text-align: left;
+padding: 20px;
+font-family: "Gravitas One";
+font-style: normal;
+font-weight: 500;
+line-height: 26.4px;
+}
+
+
+head {
+margin: 0px;
 }
 
 body {
+margin: 0px;
 background-color: #708090;
+}
+
+.navbar {
+background-color: #FF0000;
+text-align: left;
+padding: 15px;
+text-color: white;
 }
