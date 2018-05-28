@@ -5,13 +5,11 @@
 
         <tr>
             <th>Name</th>
-            <th>Articles</th>
             <th>Details</th>
         </tr>
         #foreach($journalist in $journalists)
         <tr>
             <td>$journalist.getName()</td>
-            <td>$journalist.getArticles</td>
             <td><a href="/journalists/$journalist.getId()">Details</a></td>
         <tr>
             #end

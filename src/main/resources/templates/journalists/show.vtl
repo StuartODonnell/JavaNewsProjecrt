@@ -1,1 +1,9 @@
-<p> hello world</p>
+<div>
+    <p> Name: $journalist.getName()</p>
+</div>
+
+<a href="/journalists/$journalist.getId()/edit">Edit</a>
+<form action="/journalist/$journalist.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/journalists" class="button center">Back to all journalists</a>
