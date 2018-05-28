@@ -1,0 +1,18 @@
+<p class="pageHeader">All Employees</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Articles</th>
+        </tr>
+        #foreach($journalist in $journalists )
+        <tr>
+            <td>$journalist.getName()</td>
+            <td>$journalist.getUsername()</td>
+            <td><a href=""><Articles</a> </td>
+        <tr>
+            #end
+    </table>
+</div>

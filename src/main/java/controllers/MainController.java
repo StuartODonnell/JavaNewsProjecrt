@@ -20,13 +20,16 @@ public class MainController {
         //TODO CREATE STATIC FILE LOCATION
         staticFileLocation("/public");
 
+        JournalistController journalistController = new JournalistController();
+        ArticleController articleController = new ArticleController();
+
         //TODO MAIN METHOD FOR GET - USERNAME AND PASSWORD
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            String loggedInUser = LoginController.getLoggedInUsername(req, res);
-            model.put("user", loggedInUser);
+//            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+//            model.put("user", loggedInUser);
 
             model.put("template","templates/main.vtl");
 

@@ -18,7 +18,6 @@ public class Seeds {
         Journalist journalist2 = new Journalist("Kelsie", "journalist2");
         Journalist journalist3 = new Journalist("Upul", "journalist3");
 
-
         DBHelper.save(journalist1);
         DBHelper.save(journalist2);
         DBHelper.save(journalist3);
@@ -41,7 +40,7 @@ public class Seeds {
 
 
 
-        List<Article> articlesbyJournalist = DBHelper.findArticlesByJournalist(journalist2);
+//        List<Article> articlesbyJournalist = DBHelper.findArticlesByJournalist(journalist2);
 //        List<Journalist> journalistsbyArticle = DBHelper.findJournalistforArticles(article1);
 
 //        List<Article> sortedArticles = DBArticle.returnArticlesinDescOrder();
