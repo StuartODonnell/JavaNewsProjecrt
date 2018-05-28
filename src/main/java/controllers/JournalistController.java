@@ -77,8 +77,8 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post ("/djournalists", (req, res) -> {
-            String title = req.queryParams("title");
+        post ("/journalists", (req, res) -> {
+            String name = req.queryParams("name");
 
             Journalist journalist = new Journalist("name", "username");
             DBHelper.save(journalist);
