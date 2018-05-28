@@ -10,7 +10,7 @@ public class JournalistTest {
 
     @Before
     public void before(){
-        journalist1 = new Journalist("journalist1");
+        journalist1 = new Journalist("Stuart", "journalist1");
     }
 
     @Test
