@@ -15,6 +15,7 @@ import static spark.SparkBase.staticFileLocation;
 public class MainController {
 
     public static void main(String[] args) {
+
         Seeds.seedData();
 
         //TODO CREATE STATIC FILE LOCATION
@@ -25,8 +26,8 @@ public class MainController {
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            String loggedInUser = LoginController.getLoggedInUsername(req, res);
-            model.put("user", loggedInUser);
+//            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+//            model.put("user", loggedInUser);
 
             model.put("template","templates/main.vtl");
 
