@@ -3,6 +3,7 @@ package models;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -105,6 +106,22 @@ public class Article {
 
     public void setApproval(Approval approval) {
         this.approval = approval;
+    }
+
+    public String returnCalenderasString(){
+        int year       = date.get(Calendar.YEAR);
+        int month      = date.get(Calendar.MONTH) + 1;
+        int dayOfMonth = date.get(Calendar.DAY_OF_MONTH) + 1; // Jan = 0, not 1
+        String stringYear = Integer.toString(year);
+        String stringMonth = Integer.toString(month);
+        String stringDay = Integer.toString(dayOfMonth);
+        String stringDate = stringDay + ", " + stringMonth + ", " + stringYear;
+        return stringDate;
+    }
+
+    public String returnCategoryasString(){
+        String cat = categorisation.toString();
+        return cat;
     }
 
 

@@ -45,15 +45,17 @@ public class DBHelper {
         return results;
     }
 
-
     public static <T> T find(Class classType, int id){
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
         try {
+            transaction = session.beginTransaction();
             Criteria cr = session.createCriteria(classType);
             cr.add(Restrictions.eq("id", id));
             result = (T)cr.uniqueResult();
+            transaction.commit();
         } catch (HibernateException e){
+            transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();

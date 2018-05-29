@@ -23,10 +23,9 @@ public class MainController {
 
         JournalistController journalistController = new JournalistController();
         ArticleController articleController = new ArticleController();
+        NewsController newsController = new NewsController();
 
         //TODO MAIN METHOD FOR GET - USERNAME AND PASSWORD
-        ArticleController articleController = new ArticleController();
-        JournalistController journalistController = new JournalistController();
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

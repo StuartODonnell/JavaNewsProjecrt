@@ -37,8 +37,6 @@ public class Journalist {
         this.id = id;
     }
 
-
-
     @OneToMany(mappedBy = "journalist")
     public Set<Article> getArticles() {
         return articles;
