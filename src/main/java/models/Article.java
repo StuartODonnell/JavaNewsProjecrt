@@ -20,14 +20,14 @@ public class Article {
     private Categorisation categorisation;
     private Approval approval;
 
-    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Journalist journalist) {
+    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation) {
         this.heading = heading;
         this.subHeading = subHeading;
         this.bodyArticle = bodyArticle;
         this.date = date;
         this.categorisation = categorisation;
         this.approval = Approval.PENDING;
-        this.journalist = journalist;
+        this.journalist = new Journalist("CCNews", "admin");
     }
 
     public Article() {

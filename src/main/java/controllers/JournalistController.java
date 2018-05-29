@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import db.DBJournalist;
 import models.Article;
 import models.Journalist;
 import spark.ModelAndView;
@@ -35,7 +36,7 @@ public class JournalistController {
 
         get("/journalists", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Journalist> journalists = DBJournalist.returnListofActiveJournalists();
 //            String loggedInUser = LoginController.getLoggedInUserName(req, res);
 //            model.put("user", loggedInUser);
             model.put("template", "templates/journalists/index.vtl");
@@ -77,20 +78,17 @@ public class JournalistController {
         post ("/journalists", (req, res) -> {
             String name = req.queryParams("name");
             String username = req.queryParams("username");
-
             Journalist journalist = new Journalist(name, username);
             DBHelper.save(journalist);
             res.redirect("/journalists");
             return null;
         }, new VelocityTemplateEngine());
 
-
-//TODO DISCUSS THE DELETE JOURNALISTS.... CANNOT DELETE A JOURNALIST WITHOUT DELETING AN ARTICLE FIRST
-//FOREIGN KEY VIOLATION
         post ("/journalists/:id/delete", (req, res) -> {
             Integer id = Integer.parseInt(req.params("id"));
-            Journalist journalistToDelete = DBHelper.find(Journalist.class, id);
-            DBHelper.delete(journalistToDelete);
+            Journalist journalistToMakeInactive = DBHelper.find(Journalist.class, id);
+            journalistToMakeInactive.setActive(false);
+            DBHelper.save(journalistToMakeInactive);
             res.redirect("/journalists");
             return null;
         }, new VelocityTemplateEngine());
