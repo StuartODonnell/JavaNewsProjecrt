@@ -16,11 +16,13 @@ public class Journalist {
     private String username;
     private int id;
     private Set<Article> articles;
+    private boolean active;
 
     public Journalist(String name, String username) {
         this.username = username;
         this.name = name;
         this.articles = new HashSet<>();
+        this.active = true;
     }
 
     public Journalist(){
@@ -64,11 +66,23 @@ public class Journalist {
         this.name = name;
     }
 
+    @Column(name = "active")
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     //adds article object to articles hash
+
     public void addArticle(Article article){
         this.articles.add(article);
     }
+
     //approves article
+
     public void changeStatusofArticletoApproved(Article article){
         article.setApproval(Approval.APPROVED);
     }
