@@ -1,0 +1,12 @@
+<div>
+    <p> Headline: $article.getHeading()</p>
+</div>
+
+<a href="/articles/$article.getId()/edit">Edit</a>
+
+<form action="/articles/$article.getId()/delete" method="post">
+
+    <input type="submit" value="Delete" class="button center">
+</form>
+
+<a href="/articles" class="button center">Back to all articles</a>
