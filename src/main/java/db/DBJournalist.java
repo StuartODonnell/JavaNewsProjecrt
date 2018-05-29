@@ -52,8 +52,7 @@ public class DBJournalist {
             session.close();
         } return foundJournalists;
     }
-
-
+  
     public static List<Journalist> returnListofActiveJournalists(){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Journalist> foundJournalists = null;
@@ -67,4 +66,24 @@ public class DBJournalist {
             session.close();
         } return foundJournalists;
     }
+
+  public static Journalist findJournalistByName(String searchName){
+     session = HibernateUtil.getSessionFactory().openSession();
+     Journalist journalist = null;
+
+       try { transaction = session.beginTransaction();
+           Criteria cr = session.createCriteria(Journalist.class);
+           cr.add(Restrictions.eq("name", searchName));
+           journalist = (Journalist) cr.uniqueResult();
+           transaction.commit();
+       } catch (HibernateException e ){
+           e.printStackTrace();
+       } finally {
+           session.close();
+       }
+       return journalist;
+
+
+}
+
 }
