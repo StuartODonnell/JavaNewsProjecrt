@@ -22,17 +22,12 @@ public class Seeds {
         DBHelper.save(journalist2);
         DBHelper.save(journalist3);
 
-        Article article1 = new Article("heading1", "subheading1", "bodytext1", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS);
-        Article article2 = new Article("heading2", "subheading2", "bodytext2", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT);
-        Article article3 = new Article("heading3", "subheading3", "bodytext3", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE);
-        Article article4 = new Article("heading4", "subheading4", "bodytext4", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE);
-        Article article5 = new Article("heading5", "subheading5", "bodytext5", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE);
+        Article article1 = new Article("heading1", "subheading1", "bodytext1", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS, journalist1);
+        Article article2 = new Article("heading2", "subheading2", "bodytext2", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT, journalist1);
+        Article article3 = new Article("heading3", "subheading3", "bodytext3", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
+        Article article4 = new Article("heading4", "subheading4", "bodytext4", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
+        Article article5 = new Article("heading5", "subheading5", "bodytext5", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
 
-        article1.setJournalist(journalist1);
-        article2.setJournalist(journalist1);
-        article3.setJournalist(journalist1);
-        article4.setJournalist(journalist1);
-        article5.setJournalist(journalist1);
 
         DBHelper.save(article1);
         DBHelper.save(article2);
