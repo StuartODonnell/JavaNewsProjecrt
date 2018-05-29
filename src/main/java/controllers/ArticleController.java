@@ -19,10 +19,6 @@ import static spark.Spark.post;
 import static spark.SparkBase.staticFileLocation;
 
 public class ArticleController {
-
-    private Journalist journalist1 = new Journalist("name1", "username1");
-    private Journalist journalist2 = new Journalist("name2", "username2");
-    private Journalist journalist3 = new Journalist("name3", "username3");
     GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
     public ArticleController() {
@@ -62,12 +58,7 @@ public class ArticleController {
             Map<String, Object> model = new HashMap<>();
 //                String loggedInUser = LoginController.getLoggedInUserName(req, res);
 //                model.put("user", loggedInUser);
-//                List<Journalist> journalists = DBJournalist.returnListOfActiveJournalists();
-//                TODO list of journalists
-            List<Journalist> journalists = new ArrayList<>();
-            journalists.add(journalist1);
-            journalists.add(journalist2);
-            journalists.add(journalist3);
+            List<Journalist> journalists = DBJournalist.returnListofActiveJournalists();
             List<Categorisation> categories = new ArrayList<>(Arrays.asList(Categorisation.values()));
             model.put("journalists", journalists);
             model.put("categories", categories);
