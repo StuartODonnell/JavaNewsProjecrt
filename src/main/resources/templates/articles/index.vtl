@@ -1,0 +1,18 @@
+<p class="pageHeader">All Articles</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Heading</th>
+            <th>Sub Heading</th>
+            <th>Body Content</th>
+        </tr>
+        #foreach($article in $articles)
+        <tr>
+            <td>$article.getHeading()</td>
+            <td>$article.getSubHeading()</td>
+            <td>$article.getBodyArticle()</td>
+        <tr>
+            #end
+    </table>
+</div>

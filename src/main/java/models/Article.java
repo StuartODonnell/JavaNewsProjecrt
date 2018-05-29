@@ -1,15 +1,18 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "articles")
 public class Article {
-
     private int id;
-    private Set<String> journalist;
+    private Journalist journalist;
     private String heading;
     private String subHeading;
     private String bodyArticle;
@@ -17,17 +20,19 @@ public class Article {
     private Categorisation categorisation;
     private Approval approval;
 
-    public Article() {
-    }
-
-    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Approval approval) {
+    public Article(String heading, String subHeading, String bodyArticle, GregorianCalendar date, Categorisation categorisation, Journalist journalist) {
         this.heading = heading;
         this.subHeading = subHeading;
         this.bodyArticle = bodyArticle;
         this.date = date;
         this.categorisation = categorisation;
-        this.approval = approval;
+        this.approval = Approval.PENDING;
+        this.journalist = journalist;
     }
+
+    public Article() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,20 +44,17 @@ public class Article {
         this.id = id;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "article_journalist",
-            joinColumns = {@JoinColumn(name = "journalist_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn (name ="article_id", nullable = false, updatable = false)}
-    )
-    public Set<String> getJournalist() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "journalist_id", nullable = false)
+    public Journalist getJournalist() {
         return journalist;
     }
 
-    public void setJournalist(Set<String> journalist) {
+    public void setJournalist(Journalist journalist) {
         this.journalist = journalist;
     }
 
-    @Column(name = "journalist")
+    @Column(name = "heading")
     public String getHeading() {
         return heading;
     }
@@ -105,4 +107,22 @@ public class Article {
     public void setApproval(Approval approval) {
         this.approval = approval;
     }
+
+    public String returnCalenderasString(){
+        int year       = date.get(Calendar.YEAR);
+        int month      = date.get(Calendar.MONTH) + 1;
+        int dayOfMonth = date.get(Calendar.DAY_OF_MONTH) + 1; // Jan = 0, not 1
+        String stringYear = Integer.toString(year);
+        String stringMonth = Integer.toString(month);
+        String stringDay = Integer.toString(dayOfMonth);
+        String stringDate = stringDay + ", " + stringMonth + ", " + stringYear;
+        return stringDate;
+    }
+
+    public String returnCategoryasString(){
+        String cat = categorisation.toString();
+        return cat;
+    }
+
+
 }
