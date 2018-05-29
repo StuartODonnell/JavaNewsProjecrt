@@ -72,7 +72,7 @@ public class Article {
         this.subHeading = subHeading;
     }
 
-    @Column(name="body_article")
+    @Column(name="body_article", length=500000)
     public String getBodyArticle() {
         return bodyArticle;
     }
