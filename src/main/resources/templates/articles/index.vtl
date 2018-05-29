@@ -5,13 +5,13 @@
         <tr>
             <th>Heading</th>
             <th>Sub Heading</th>
-            <th>Body Content</th>
+            <th>Details</th>
         </tr>
         #foreach($article in $articles)
         <tr>
             <td>$article.getHeading()</td>
             <td>$article.getSubHeading()</td>
-            <td>$article.getBodyArticle()</td>
+            <td><a href ="/articles/$article.getId()" class="linktobody" >Full Story</a></td>
         <tr>
             #end
     </table>
