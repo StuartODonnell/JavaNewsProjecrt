@@ -6,11 +6,16 @@
 
 </div>
 
-<a href="/articles/$article.getId()/edit">Edit</a>
+
+<form action="/articles/$article.getId()/edit" method="get">
+    <input type="submit" value="Edit" class="button center">
+</form>
 
 <form action="/articles/$article.getId()/delete" method="post">
 
     <input type="submit" value="Delete" class="button center">
 </form>
 
-<a href="/articles" class="button center">Back to all articles</a>
+<form action="/articles" class="button center">
+    <input type="submit" value="Back to all articles" class="button center">
+</form>
