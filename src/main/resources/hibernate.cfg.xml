@@ -5,9 +5,9 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://localhost/newsdb</property>
+        <property name="connection.url">jdbc:postgresql://ec2-54-246-84-200.eu-west-1.compute.amazonaws.com/d9i4m6h5ir209s?user=viqvpbjzmcwmhk&amp;password=9ba402121adec31bae63306eec43991815dcfdbde1fb5b5caa769f5e846a1dec</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="connection.pool_size">1</property>
         <property name="show_sql">true</property>
