@@ -60,6 +60,16 @@ color: #0000FF;
 font-family: "Courier";
 }
 
+h5{
+   justify-text: top;
+   text-align: center;
+   color: #20B2AA;
+   font-family: "Gravitas One";
+   font-size: 30px;
+   margin-top: 10px;
+   margin-bottom: 20px;
+}
+
 head {
 margin: 0px;
 }
@@ -108,8 +118,9 @@ form {
 }
 
 .floating-box {
+   color: #FFFAFA;
    vertical-align: text-top;
-   background-color: #778899;
+   background-color: #C0C0C0;
    display: inline-block;
    width: 350px;
    height: 300px;
