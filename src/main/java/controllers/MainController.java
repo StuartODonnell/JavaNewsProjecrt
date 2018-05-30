@@ -1,5 +1,6 @@
 package controllers;
 
+import db.DBArticle;
 import db.DBHelper;
 import db.Seeds;
 import models.*;
