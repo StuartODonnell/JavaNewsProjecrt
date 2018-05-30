@@ -3,13 +3,13 @@
 <form action="/articles/$article.getId()" method="post">
 
     <label for="heading">Heading:</label>
-    <input class="inputbox" type="text" name="heading" required="true" value="$article.getHeading()">
+    <input class="inputbox" type="text" name="heading" id="heading" required="true" value="$article.getHeading()">
 
     <label for="subheader">Sub Heading:</label>
-    <input class="inputbox" type="text" name="subheader" required="true" value="$article.getSubHeading()">
+    <input class="inputbox" type="text" name="subheader" id="subheader" required="true" value="$article.getSubHeading()">
 
     <label for="article_body">Article Body:</label>
-    <textarea rows="4" cols="50" resize="none" class="textbox" type="text" name="article_body" required="true" >$article.getBodyArticle()</textarea>
+    <textarea rows="4" cols="50" resize="none" class="textbox" id="article_body" type="text" name="article_body" required="true" >$article.getBodyArticle()</textarea>
 
     <label for="categorisation">Category:</label>
     <select id="categorisation" name="categorisation">

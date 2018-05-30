@@ -106,7 +106,7 @@ public class ArticleController {
             Integer integerId = Integer.parseInt(req.params("id"));
             Article article = DBHelper.find(Article.class, integerId);
             article.setHeading(req.queryParams("heading"));
-            article.setHeading(req.queryParams("subheader"));
+            article.setSubHeading(req.queryParams("subheader"));
             article.setBodyArticle(req.queryParams("article_body"));
             String category = req.queryParams("categorisation");
             article.setCategorisation(Categorisation.valueOf(category));
