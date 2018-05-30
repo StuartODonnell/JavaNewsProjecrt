@@ -115,7 +115,7 @@ public class Article {
         String stringYear = Integer.toString(year);
         String stringMonth = Integer.toString(month);
         String stringDay = Integer.toString(dayOfMonth);
-        String stringDate = stringDay + ", " + stringMonth + ", " + stringYear;
+        String stringDate = stringDay + "-" + stringMonth + "-" + stringYear;
         return stringDate;
     }
 
