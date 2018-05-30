@@ -44,9 +44,9 @@ public class MainController {
 
         get("/search", (req, res) ->{
             Map<String, Object> model = new HashMap<>();
-            List<Article> results = DBArticle.searchArticlesByBody("search");
+            List<Article> results = DBArticle.searchArticlesByHeading("search");
             model.put("results", results);
-            model.put("templates", "templates/search.vtl");
+            model.put("templates", "templates/news/search.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
@@ -54,9 +54,9 @@ public class MainController {
 
             Map<String, Object> model = new HashMap<>();
             String search = req.queryParams("search");
-            List<Article> foundArticles = DBArticle.searchArticlesByBody(search);
+            List<Article> foundArticles = DBArticle.searchArticlesByHeading(search);
             model.put("foundArticles", foundArticles);
-            model.put("template", "templates/search.vtl" );
+            model.put("template", "templates/news/search.vtl" );
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }
