@@ -22,11 +22,11 @@ public class Seeds {
         DBHelper.save(journalist2);
         DBHelper.save(journalist3);
 
-        Article article1 = new Article("heading1", "subheading1", "bodytext1", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS, journalist1);
-        Article article2 = new Article("heading2", "subheading2", "bodytext2", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT, journalist1);
-        Article article3 = new Article("heading3", "subheading3", "bodytext3", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
-        Article article4 = new Article("heading4", "subheading4", "bodytext4", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
-        Article article5 = new Article("heading5", "subheading5", "bodytext5", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
+        Article article1 = new Article("heading1", "subheading1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Se", new GregorianCalendar(2018, 6, 11), Categorisation.CURRENT_AFFAIRS, journalist1);
+        Article article2 = new Article("heading2", "subheading2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Se", new GregorianCalendar(2018, 7, 12), Categorisation.SPORT, journalist1);
+        Article article3 = new Article("heading3", "subheading3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Se", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
+        Article article4 = new Article("heading4", "subheading4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Se", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
+        Article article5 = new Article("heading5", "subheading5", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Se", new GregorianCalendar(2016, 7, 12), Categorisation.FINANCE, journalist1);
 
 
         DBHelper.save(article1);
