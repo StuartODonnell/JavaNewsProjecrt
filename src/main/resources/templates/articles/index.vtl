@@ -5,14 +5,24 @@
         <tr>
             <th>Heading</th>
             <th>Sub Heading</th>
-            <th>Body Content</th>
+            <th>Details</th>
         </tr>
         #foreach($article in $articles)
         <tr>
             <td>$article.getHeading()</td>
             <td>$article.getSubHeading()</td>
-            <td>$article.getBodyArticle()</td>
+            <td><a href ="/articles/$article.getId()" class="linktobody" >Full Story</a></td>
         <tr>
             #end
     </table>
+
+    <form action="/articles/new" class="button center">
+        <input type="submit" value="Add a new Article" class="button center">
+    </form>
+
+    <form action="/journalists" class="button center">
+        <input type="submit" value="Journalists" class="button center">
+    </form>
+
+
 </div>

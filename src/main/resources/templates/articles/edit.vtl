@@ -1,19 +1,34 @@
-<p class="pageHeader">Journalists</p>
+<p class="pageHeader">Edit Article</p>
 
-<div>
-    <a href="/journalists/new" class="button center">Journalist</a>
-</div>
-<div class="container">
-    <table>
-        <tr>
-            <th>Journalist</th>
-            <th></th>
-        </tr>
-        #foreach($journalist in $journalists)
-        <tr>
-            <td>$djournalist.getuserName()</td>
-            <td><a href="/journalists/$journalist.getId()" class="button center">Details</a></td>
-        <tr>
-            #end
-    </table>
-</div>
+<form action="/articles/$article.getId()" method="post">
+
+    <label for="heading">Heading:</label>
+    <input class="inputbox" type="text" name="heading" id="heading" required="true" value="$article.getHeading()">
+
+    <label for="subheader">Sub Heading:</label>
+    <input class="inputbox" type="text" name="subheader" id="subheader" required="true" value="$article.getSubHeading()">
+
+    <label for="article_body">Article Body:</label>
+    <textarea rows="4" cols="50" resize="none" class="textbox" id="article_body" type="text" name="article_body" required="true" >$article.getBodyArticle()</textarea>
+
+    <label for="categorisation">Category:</label>
+    <select id="categorisation" name="categorisation">
+        #foreach( $category in $categories )
+        <option value="$category">$category</option>
+        #end
+    </select>
+
+    <label for="journalist">Journalist:</label>
+    <select id="journalist" name="journalist">
+        #foreach( $journalist in $journalists )
+        <option value="$journalist.getName()">$journalist.getName()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
+</form>
+
+<form action="/articles/$article.getId()" class="button center" method="get">
+    <input type="submit" value="Cancel" class="button center">
+</form>
+

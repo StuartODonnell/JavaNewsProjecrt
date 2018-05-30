@@ -3,18 +3,62 @@
 <head>
     <title>CCNewsWeb</title>
     <link href="/style.css" rel="stylesheet" type="text/css" />
-    <h1>CCNEWS</h1>
-
-    <ul>
-    <li><a href="/news">Home</a></li>
-    <li><a href="/news/sport">Sport</a></li>
-    <li><a href="/news/currentaffairs">Current Affairs</a></li>
-    <li><a href="/news/politics">Politics</a></li>
-    <li><a href="/news/sciencenature">Science & Nature</a></li>
-    <li><a href="/news/finance">Finance</a></li>
-    </ul>
 </head>
 <body>
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<div id="container">
+
+    <div id="topbar"></div>
+
+    <div id="menudiv">
+        <div class="fixedwidth">
+
+            <div id="logodiv">
+
+                <h1><img src="/images/CCNewsLogo.png" alt="CCNewsLogo" class="logo"></h1>
+                <ul>
+                    <li><a href="/news">Home</a></li>
+                    <li><a href="/news/sport">Sport</a></li>
+                    <li><a href="/news/currentaffairs">Current Affairs</a></li>
+                    <li><a href="/news/politics">Politics</a></li>
+                    <li><a href="/news/sciencenature">Science & Nature</a></li>
+                    <li><a href="/news/finance">Finance</a></li>
+                    <div class="search-container">
+                        <form action="/search" method ="post">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <!--<p>Logged in as: $user <a href="/logout">Logout</a></p>-->
 <div class="container">

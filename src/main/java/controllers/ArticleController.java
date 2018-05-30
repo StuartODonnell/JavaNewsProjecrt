@@ -27,21 +27,20 @@ public class ArticleController {
 
     private void setupEndpoints() {
 
-
-//            get("/articles/:id/edit", (req, res) -> {
-//                String stringId = req.params(":categorisation");
-//                Integer integerId = Integer.parseInt(stringId);
-//                Article article = DBHelper.find(Article.class, integerId);
-//                List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-//
-//                Map<String, Object> model = new HashMap<>();
-////                String loggedInUser = LoginController.getLoggedInUserName(req, res);
-////                model.put("user", loggedInUser);
-//                model.put("template", "templates/articles/edit.vtl");
-//                model.put("article", article);
-//
-//                return new ModelAndView(model, "templates/layout.vtl");
-//            }, new VelocityTemplateEngine());
+        get("/articles/:id/edit", (req, res) -> {
+            Integer integerId = Integer.parseInt(req.params("id"));
+            Article article = DBHelper.find(Article.class, integerId);
+            Map<String, Object> model = new HashMap<>();
+//          String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//          model.put("user", loggedInUser);
+            List<Journalist> journalists = DBJournalist.returnListofActiveJournalists();
+            List<Categorisation> categories = new ArrayList<>(Arrays.asList(Categorisation.values()));
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("template", "templates/articles/edit.vtl");
+            model.put("article", article);
+            return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
 
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -67,29 +66,22 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-//            get("/articles/:id", (req, res) -> {
-//                String stringId = req.params(":id");
-//                Integer integerId = Integer.parseInt(stringId);
-//                Article article = DBHelper.find(Article.class, integerId);
-//                List<Journalist> journalists = DBHelper.findJournalistsByArticle(article);
-//
-//                Map<String, Object> model = new HashMap<>();
-////                String loggedInUser = LoginController.getLoggedInUserName(req, res);
-////                model.put("user", loggedInUser);
-//                model.put("article", article);
-//                model.put("template", "templates/articles/show.vtl");
-//
-//                return new ModelAndView(model, "templates/layout.vtl");
-//            }, new VelocityTemplateEngine());
-//
+        get("/articles/:id", (req, res) -> {
+            Integer integerId = Integer.parseInt(req.params("id"));
+            Article article = DBHelper.find(Article.class, integerId);
+            Map<String, Object> model = new HashMap<>();
+//                String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//                model.put("user", loggedInUser);
+            model.put("article", article);
+            model.put("template", "templates/articles/show.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
         post("/articles", (req, res) -> {
-//                int journalistId = Integer.parseInt(req.queryParams("journalist"));
-//                Journalist journalist = DBHelper.find(Journalist.class,journalistId);
             String heading = req.queryParams("heading");
             String subheading = req.queryParams("subheader");
             String article_body = req.queryParams("article_body");
-//                String date = req.queryParams("date");
-//                String pattern = "dd-MM-yyyy";
             String category = req.queryParams("categorisation");
             Categorisation cat = Categorisation.valueOf(category);
             String journalist = req.queryParams("journalist");
@@ -99,32 +91,34 @@ public class ArticleController {
             res.redirect("/articles");
             return null;
         }, new VelocityTemplateEngine());
-    }
-//
-//            post ("/articles/:id/delete", (req, res) -> {
-//                int id = Integer.parseInt(req.params(":id"));
-//                Article articleToDelete = DBHelper.find(Article.class, id);
-//                DBHelper.delete(articleToDelete);
-//                res.redirect("/articles");
-//                return null;
-//            }, new VelocityTemplateEngine());
-//
-//            post ("/articles/:id", (req, res) -> {
-//                String stringId = req.params(":id");
-//                Integer integerId = Integer.parseInt(stringId);
-//                Article article = DBHelper.find(Article.class, integerId);
-//                int journalistId = Integer.parseInt(req.queryParams("journalist"));
-//                Journalist journalist = DBHelper.find(Journalist.class, journalistId);
-//                String userName = req.queryParams("userName");
-//
-//                journalist.setUsername(userName);
-//                DBHelper.save(userName);
-//                res.redirect("/articles");
-//                return null;
-//
-//            }, new VelocityTemplateEngine());
-//}
 
+
+        post ("/articles/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Article articleToDelete = DBHelper.find(Article.class, id);
+            DBHelper.delete(articleToDelete);
+            res.redirect("/articles");
+            return null;
+        }, new VelocityTemplateEngine());
+
+
+        post ("/articles/:id", (req, res) -> {
+            Integer integerId = Integer.parseInt(req.params("id"));
+            Article article = DBHelper.find(Article.class, integerId);
+            article.setHeading(req.queryParams("heading"));
+            article.setSubHeading(req.queryParams("subheader"));
+            article.setBodyArticle(req.queryParams("article_body"));
+            String category = req.queryParams("categorisation");
+            article.setCategorisation(Categorisation.valueOf(category));
+            String journalist = req.queryParams("journalist");
+            Journalist foundJournalist = DBJournalist.findJournalistByName(journalist);
+            article.setJournalist(foundJournalist);
+            DBHelper.save(article);
+            res.redirect("/articles");
+            return null;
+        }, new VelocityTemplateEngine());
+
+    }
 }
 
 

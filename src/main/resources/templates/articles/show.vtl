@@ -1,0 +1,21 @@
+<div><p class="newsPageTitle">$article.getHeading()</p>
+    <p class="newsSubHeading">$article.getSubHeading()</p>
+    <p class="articleDate">$article.returnCalenderasString()</p>
+    <div class="articlebody">$article.getBodyArticle()</div>
+    <p class="newsjournalist">Author: $article.getJournalist().getName()</p>
+
+</div>
+
+
+<form action="/articles/$article.getId()/edit" method="get">
+    <input type="submit" value="Edit" class="button center">
+</form>
+
+<form action="/articles/$article.getId()/delete" method="post">
+
+    <input type="submit" value="Delete" class="button center">
+</form>
+
+<form action="/articles" class="button center">
+    <input type="submit" value="Back to all articles" class="button center">
+</form>
